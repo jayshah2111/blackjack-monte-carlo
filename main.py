@@ -1,3 +1,5 @@
+from betting.BetGenerator import BetGenerator
+
 user_input = {
     'samples': 20, # Number of simulations
     'bet_count': 10000, # Number of bets per simulation
@@ -13,6 +15,9 @@ user_input = {
     'bet_value': 1, # Isn't used in all strategies
     'bet_percentage': 0.0100,  # Isn't used in all strategies, range: 0.0000-1.0000
 }
+
+bet_results = BetGenerator(user_input).generate_random_bet_results()
+data = (bet_results, user_input)
 
 def main():
     return 0
