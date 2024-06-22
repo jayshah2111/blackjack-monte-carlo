@@ -1,3 +1,5 @@
+from scipy.stats import binom
+
 def calculate_expected_rate_of_return(user_input):
     '''
     The expected return is the profit or loss an investor anticipates on an
@@ -56,3 +58,19 @@ def calcule_risk_of_ruin(current_strategy, user_input):
         (1 - (user_input['win_rate']*user_input['payout_rate'] - user_input['lose_rate'])) /
         (1 + (user_input['win_rate']*user_input['payout_rate'] - user_input['lose_rate'])))**units
     return round(risk_of_ruin*100, 2)
+
+def calculate_broke_percentage(user_input, broke_count):
+    return round((broke_count / user_input['samples']) * 100, 2)
+
+
+def calculate_profited_percentage(user_input, profitors_count):
+    return round((profitors_count / user_input['samples']) * 100, 2)
+
+
+def calculate_survived_profited_percentage(user_input, broke_count, profitors_count):
+    try:
+        survive_profit_percent = round(
+            (profitors_count / (user_input['samples'] - broke_count)) * 100, 2)
+    except ZeroDivisionError:
+        survive_profit_percent = 0
+    return survive_profit_percent
