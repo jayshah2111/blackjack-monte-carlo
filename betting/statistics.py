@@ -14,3 +14,45 @@ def calculate_expected_rate_of_return(user_input):
                             user_input['lose_rate']*1)*100, 2)
     # *1 because you lose your entire bet
     return rate_of_return
+
+def calculate_cdf_average_from_binomial_distribution(user_input, bet_results):
+    cdf_sum = 0
+    for sample_result in bet_results:
+        true_results = sum(1 for x in sample_result if x == True)
+        cdf_sum += binom.cdf(true_results,
+                             user_input['bet_count'], user_input['win_rate'])
+    cdf_average = round((cdf_sum/user_input['samples'])*100, 2)
+    return cdf_average
+
+
+def calcule_risk_of_ruin(current_strategy, user_input):
+    '''
+    Risk of ruin is a concept in gambling, insurance, and finance relating to
+    the likelihood of losing all one's investment capital[1] or extinguishing
+    one's bankroll below the minimum for further play. For instance, if someone
+    bets all their money on a simple coin toss, the risk of ruin is 50%. In a
+    multiple-bet scenario, risk of ruin accumulates with the number of bets:
+    each repeated play increases the risk, and persistent play ultimately
+    yields the stochastic certainty of gambler's ruin.
+
+    Formula: Risk of Ruin = ((1 - (W*R - L)) / (1 + (W*R - L)))^U
+        Where:
+            W = the probability of a desirable outcome, or a win
+            L = the probability of an undesirable outcome, or a loss
+            R = Payout Rate, 0 <= R <= 1
+            U = the maximum number of risks that can be taken before the
+                individual reaches their threshold for ruin
+    '''
+
+    units = 0
+    if current_strategy == strategies.strategies_list[0]:
+        try:
+            units = (user_input['initial_bankroll'] -
+                     user_input['stoploss'])/user_input['bet_value']
+        except TypeError:
+            units = user_input['initial_bankroll']/user_input['bet_value']
+
+    risk_of_ruin = (
+        (1 - (user_input['win_rate']*user_input['payout_rate'] - user_input['lose_rate'])) /
+        (1 + (user_input['win_rate']*user_input['payout_rate'] - user_input['lose_rate'])))**units
+    return round(risk_of_ruin*100, 2)
