@@ -102,3 +102,17 @@ def calculate_yield_percentage_average(user_input, bankroll_histories, bet_value
 
     yield_percentage_average = round(yield_sum/user_input['samples'], 2)
     return yield_percentage_average
+
+def calculate_average_of_number_of_bets(user_input, bet_value_histories):
+    number_of_bets = 0
+    for bet_value_history in bet_value_histories:
+        number_of_bets += len(bet_value_history)
+    average_of_number_of_bets = int(number_of_bets/user_input['samples'])
+    return average_of_number_of_bets
+
+
+def calculate_final_bankroll_average(user_input, bankroll_histories):
+    final_bankroll_sum = 0
+    for bankroll_history in bankroll_histories: final_bankroll_sum += bankroll_history[-1]
+    final_bankroll_average = round(final_bankroll_sum/user_input['samples'], 2)
+    return final_bankroll_average
