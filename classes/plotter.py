@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.style as style
 from typing import Union, List
 
-from betting.utils import *
+from classes.utils import *
 style.use('bmh')
 
 class PlotGraph:
