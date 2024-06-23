@@ -74,3 +74,31 @@ def calculate_survived_profited_percentage(user_input, broke_count, profitors_co
     except ZeroDivisionError:
         survive_profit_percent = 0
     return survive_profit_percent
+
+def calculate_survived_no_profited_percentage(user_input, broke_count, profitors_count):
+    try:
+        survive_NO_profit_percent = round(
+            ((((user_input['samples'] - broke_count)) - profitors_count) /
+                (user_input['samples'] - broke_count)) * 100, 2)
+    except ZeroDivisionError:
+        survive_NO_profit_percent = 0
+    return survive_NO_profit_percent
+
+
+def calculate_roi_percentage_average(user_input, bankroll_histories):
+    roi_sum = 0
+    for bankroll_history in bankroll_histories:
+        roi_sum += ((bankroll_history[-1] - user_input['initial_bankroll']) / user_input['initial_bankroll'])*100
+    roi_percentage_average = round(roi_sum/user_input['samples'], 2)
+    return roi_percentage_average
+
+
+def calculate_yield_percentage_average(user_input, bankroll_histories, bet_value_histories):
+    bet_value_sum = 0
+    yield_sum = 0
+    for bankroll_history, bet_value_history in zip(bankroll_histories, bet_value_histories):
+        bet_value_sum = sum(bet_value_history)
+        yield_sum += ((bankroll_history[-1] - user_input['initial_bankroll'])/bet_value_sum)*100
+
+    yield_percentage_average = round(yield_sum/user_input['samples'], 2)
+    return yield_percentage_average
