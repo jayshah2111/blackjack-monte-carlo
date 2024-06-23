@@ -116,3 +116,26 @@ def calculate_final_bankroll_average(user_input, bankroll_histories):
     for bankroll_history in bankroll_histories: final_bankroll_sum += bankroll_history[-1]
     final_bankroll_average = round(final_bankroll_sum/user_input['samples'], 2)
     return final_bankroll_average
+
+def calculate_average_profit(profits):
+    try:
+        average_profit = round(sum(profits) / len(profits), 2)
+    except ZeroDivisionError:
+        average_profit = 0
+    return average_profit
+
+
+def calculate_average_loses(loses):
+    try:
+        average_loses = round(sum(loses) / len(loses), 2)
+    except ZeroDivisionError:
+        average_loses = 0
+    return average_loses
+
+
+def calculate_expected_profit(average_profit, profited_percentage):
+    return round(average_profit * (profited_percentage / 100), 2)
+
+
+def calculate_expected_loss(average_loses, profited_percentage):
+    return round(average_loses * (1 - (profited_percentage / 100)), 2)
