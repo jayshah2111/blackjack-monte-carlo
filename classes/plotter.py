@@ -8,3 +8,23 @@ style.use('bmh')
 class PlotGraph:
     def __init__(self, user_input: dict) -> None:
         self.user_input = user_input
+        
+    def config(
+            self,
+            bet_count_histories: List[List[int]],
+            bankroll_histories: List[List[Union[int, float]]],
+            title: str,
+    ) -> None:
+        plt.figure()
+        [plt.plot(x, y, linewidth=0.8)
+         for x, y in zip(bet_count_histories, bankroll_histories)]
+        plt.title(title)
+
+        if self.user_input['samples'] > 1:
+            self.__config_bankroll_average(bankroll_histories)
+
+        plt.ylabel('Bankroll')
+        plt.xlabel('Bet Count')
+        plt.axhline(self.user_input['initial_bankroll'],
+                    color='b', linewidth=1.2)
+        plt.axhline(0, color='r', linewidth=1.2)
