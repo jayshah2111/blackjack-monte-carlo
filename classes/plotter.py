@@ -28,3 +28,15 @@ class PlotGraph:
         plt.axhline(self.user_input['initial_bankroll'],
                     color='b', linewidth=1.2)
         plt.axhline(0, color='r', linewidth=1.2)
+        
+    def __config_bankroll_average(self, bankroll_histories):
+        bankroll_history_average = get_bankroll_history_average(self.user_input['samples'], bankroll_histories)
+        bet_count_history = get_bet_count_history(bankroll_history_average)
+        plt.plot(bet_count_history, bankroll_history_average,
+                 linewidth=2.5, color='k', label='Bankroll Average')
+        leg = plt.legend(loc='upper left')
+        [line.set_linewidth(4.0) for line in leg.get_lines()]
+
+    @staticmethod
+    def show() -> None:
+        plt.show()
