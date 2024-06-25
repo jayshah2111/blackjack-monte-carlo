@@ -60,3 +60,12 @@ class Strategies(ABC):
                 if broke or stoploss_reached or stopgain_reached:
                     self.__current_bankroll = bankroll_history[-1]
                     break
+                
+                bankroll_history.append(self.__current_bankroll)
+                bet_value_history.append(self.__bet_value)
+
+            if self.__profit_or_lose() > 0 and not (broke or stoploss_reached):
+                profitors_count += 1
+                profits.append(self.__profit_or_lose())
+            else:
+                loses.append(self.__profit_or_lose())
