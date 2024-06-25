@@ -69,3 +69,10 @@ class Strategies(ABC):
                 profits.append(self.__profit_or_lose())
             else:
                 loses.append(self.__profit_or_lose())
+                
+            if broke: broke_count += 1
+            if stoploss_reached: sl_reached_count += 1
+            if stopgain_reached: sg_reached_count += 1
+
+            bankroll_histories.append(bankroll_history.copy())
+            self.bet_value_histories.append(bet_value_history.copy())
