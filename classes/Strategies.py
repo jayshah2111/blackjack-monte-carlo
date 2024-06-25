@@ -20,3 +20,25 @@ class Strategies(ABC):
         self.user_input: dict = user_input
         self.title: str = title
         self.__bet_value = None
+    
+    def simulate_strategy(self):
+        graph: PlotGraph = PlotGraph(self.user_input)
+
+        self.__current_bankroll: Union[int, float] = self.user_input['initial_bankroll']
+        self.__sample_result: List[bool] = self.bet_results[0][0]
+        self.__bet_result_index: int = 0
+        sl_reached_count: int = 0
+        sg_reached_count: int = 0
+        broke_count: int = 0
+        profitors_count: int = 0
+        profits: List[Union[int, float]] = []
+        loses: List[Union[int, float]] = []
+        bet_count_histories: List[List[int]] = []
+        bankroll_histories: List[List[Union[int, float]]] = []
+        self.bet_value_histories: List[List[Union[int, float]]] = []
+        broke: bool = False
+        stoploss_reached: bool = False
+        stopgain_reached: bool = False
+
+        self.strategy_setup()
+        self.bet_value_calculator_fixed()
