@@ -42,3 +42,21 @@ class Strategies(ABC):
 
         self.strategy_setup()
         self.bet_value_calculator_fixed()
+        
+        for self.__sample_result in self.bet_results:
+            bankroll_history = [self.user_input['initial_bankroll']]
+            self.__bet_value = self.user_input['bet_value']
+            bet_value_history = []
+            self.__current_bankroll = self.user_input['initial_bankroll']
+            self.sample_setup()
+            for self.__bet_result_index, bet_result in enumerate(self.__sample_result):
+                self.bet_value_calculator_non_fixed()
+                self.__bet_value = round(self.__bet_value, 2)
+                self.__bet(bet_result)
+                
+                broke = self.__broke_verify(broke)
+                stoploss_reached = self.__stoploss_verify(stoploss_reached)
+                stopgain_reached = self.__stopgain_verify(stopgain_reached)
+                if broke or stoploss_reached or stopgain_reached:
+                    self.__current_bankroll = bankroll_history[-1]
+                    break
