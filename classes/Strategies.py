@@ -100,3 +100,18 @@ class Strategies(ABC):
         if self.user_input['stoploss'] is not None:
             if self.__current_bankroll <= self.user_input['stoploss']: stoploss_reached = True
         return stoploss_reached
+    
+    def __stopgain_verify(self, stopgain_reached):
+        if self.user_input['stopgain'] is not None:
+            if self.__current_bankroll >= self.user_input['stopgain']: stopgain_reached = True
+        return stopgain_reached
+
+    def __profit_or_lose(self):
+        return self.__current_bankroll - self.user_input['initial_bankroll']
+
+    def __get_bet_count_histories(self, bankroll_histories):
+        bet_count_histories = []
+        for index, bankroll_history in enumerate(bankroll_histories):
+            bet_count_histories.append(list(zip(*enumerate(bankroll_history, 1))))
+            bet_count_histories[index] = list(bet_count_histories[index][0])
+        return bet_count_histories
