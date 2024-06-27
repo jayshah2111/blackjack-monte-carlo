@@ -76,3 +76,13 @@ class Strategies(ABC):
 
             bankroll_histories.append(bankroll_history.copy())
             self.bet_value_histories.append(bet_value_history.copy())
+        
+        bet_count_histories = self.__get_bet_count_histories(bankroll_histories)
+
+        stats: Stats = Stats(self.bet_results, self.user_input, bankroll_histories,
+                             self.bet_value_histories, sl_reached_count, sg_reached_count,
+                             broke_count, profitors_count, profits, loses, self.title)
+
+        stats.print_strategy_stats()
+        graph.config(bet_count_histories, bankroll_histories, self.title)
+        return graph
