@@ -86,3 +86,17 @@ class Strategies(ABC):
         stats.print_strategy_stats()
         graph.config(bet_count_histories, bankroll_histories, self.title)
         return graph
+
+    def __bet(self, bet_result):
+        if bet_result: self.__current_bankroll += self.__bet_value*self.user_input['payout_rate']
+        else: self.__current_bankroll -= self.__bet_value
+
+    def __broke_verify(self, broke, broken_when_is_less_than=1):
+        if broken_when_is_less_than < 1: broken_when_is_less_than = 1
+        broke = True if self.__current_bankroll < broken_when_is_less_than else False
+        return broke
+
+    def __stoploss_verify(self, stoploss_reached):
+        if self.user_input['stoploss'] is not None:
+            if self.__current_bankroll <= self.user_input['stoploss']: stoploss_reached = True
+        return stoploss_reached
