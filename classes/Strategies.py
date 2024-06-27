@@ -115,3 +115,10 @@ class Strategies(ABC):
             bet_count_histories.append(list(zip(*enumerate(bankroll_history, 1))))
             bet_count_histories[index] = list(bet_count_histories[index][0])
         return bet_count_histories
+    
+    def max_min_verify(self, bet_value):
+        if self.user_input['minimum_bet_value'] is not None:
+            if bet_value < self.user_input['minimum_bet_value']: bet_value = self.user_input['minimum_bet_value']
+        if self.user_input['maximum_bet_value'] is not None:
+            if bet_value > self.user_input['maximum_bet_value']: bet_value = self.user_input['maximum_bet_value']
+        return bet_value
