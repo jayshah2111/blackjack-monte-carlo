@@ -122,3 +122,16 @@ class Strategies(ABC):
         if self.user_input['maximum_bet_value'] is not None:
             if bet_value > self.user_input['maximum_bet_value']: bet_value = self.user_input['maximum_bet_value']
         return bet_value
+    
+    # region HOOK METHODS
+    def strategy_setup(self):
+        """
+        Strategy definitions, before everything starts
+        """
+        pass
+
+    def bet_value_calculator_fixed(self):
+        """
+        Calculate the fixed amount of bet.
+        """
+        pass
