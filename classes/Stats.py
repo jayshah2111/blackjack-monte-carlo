@@ -18,3 +18,23 @@ class Stats():
         self.profits = profits
         self.loses = loses
         self.title = title
+        
+    @staticmethod
+    def print_indicators_tutorial():
+        print('\n'+'-'*120)
+        print('''Expected Rate of Return:  A RoR of 3% means that you tend to win 3% of your stake in the long run.\n''')
+        #print('''CDF Average from Binomial Distribution: ''')
+        print('''Kelly criterion in percentage of capital: \n''')
+        #print('''Risk of Ruin: \n''')
+        print('''Percentage Broke: \n''')
+        print('''Percentage Profited: \n''')
+        print('''Percentage Survivors Who Profited: \n''')
+        print('''Percentage Survivors Who NOT Profited: \n''')
+        print('''ROI Percentage Average (Return On Investment Percentage Average): \n''')
+        print('''Yield Percentage Average: \n''')
+        print('''Final Bankroll Average: \n''')
+        print('''Average Profit: \n''')
+        print('''Average Loses: \n''')
+        print('''Expected Profit: \n''')
+        print('''Expected Loss: ''')
+        print('-'*120)
