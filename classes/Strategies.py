@@ -179,3 +179,13 @@ class PercentageBettor(Strategies):
     def bet_value_calculator_non_fixed(self):
         self._Strategies__bet_value = self._Strategies__current_bankroll*self.bet_percentage
         self._Strategies__bet_value = self.max_min_verify(self._Strategies__bet_value)
+        
+class KellyCriterion(Strategies):
+    def __init__(
+            self,
+            bet_results: List[List[bool]],
+            user_input: dict,
+            title: str = 'Kelly Criterion',
+            kelly_fraction: Union[int, float, None] = 1):
+        super().__init__(bet_results, user_input, title)
+        self.kelly_fraction = kelly_fraction
