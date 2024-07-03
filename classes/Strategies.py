@@ -172,3 +172,6 @@ class PercentageBettor(Strategies):
             bet_percentage: Union[int, float, None] = None):
         super().__init__(bet_results, user_input, title)
         self.bet_percentage = bet_percentage
+        
+    def strategy_setup(self):
+        if self.bet_percentage is None: self.bet_percentage = self.user_input['bet_percentage']
