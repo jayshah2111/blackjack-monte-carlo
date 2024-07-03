@@ -147,3 +147,15 @@ class Strategies(ABC):
         Calculate the variable amount of bet, that can change every bet.
         """
         pass
+    
+class FixedBettor(Strategies):
+    def __init__(
+            self,
+            bet_results: List[List[bool]],
+            user_input: dict,
+            title: str = 'Fixed Bettor',
+            bet_value: Union[int, float, None] = None):
+        super().__init__(bet_results, user_input, title)
+        self.bet_value = bet_value
+
+    
