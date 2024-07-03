@@ -189,3 +189,10 @@ class KellyCriterion(Strategies):
             kelly_fraction: Union[int, float, None] = 1):
         super().__init__(bet_results, user_input, title)
         self.kelly_fraction = kelly_fraction
+        
+    def strategy_setup(self):
+        self.kelly_percentage = self.user_input['win_rate'] - ((1-self.user_input['win_rate']) / (self.user_input['payout_rate']/1))
+        if self.kelly_percentage <= 0:
+            print(f'\n*{self.title.upper()}*')
+            print('Negative Expectation. DO NOT operate!')
+            return [[], [], self.title]
