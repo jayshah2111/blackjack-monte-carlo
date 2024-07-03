@@ -199,3 +199,4 @@ class KellyCriterion(Strategies):
     
     def bet_value_calculator_non_fixed(self):
         self._Strategies__bet_value = self._Strategies__current_bankroll * self.kelly_percentage*self.kelly_fraction
+        self._Strategies__bet_value = self.max_min_verify(self._Strategies__bet_value)
