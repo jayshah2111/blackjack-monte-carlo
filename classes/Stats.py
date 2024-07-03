@@ -38,3 +38,11 @@ class Stats():
         print('''Expected Profit: \n''')
         print('''Expected Loss: ''')
         print('-'*120)
+        
+    def __get_general_calculations(self):
+        '''General Stats'''
+        self.rate_of_return = calculate_expected_rate_of_return(self.user_input)
+        self.cdf_average = calculate_cdf_average_from_binomial_distribution(
+           self.user_input, self.bet_results)
+        
+    
