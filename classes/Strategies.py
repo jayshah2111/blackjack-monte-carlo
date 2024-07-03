@@ -135,3 +135,15 @@ class Strategies(ABC):
         Calculate the fixed amount of bet.
         """
         pass
+
+    def sample_setup(self):
+        """
+        Configuration for each sample.
+        """
+        pass
+
+    def bet_value_calculator_non_fixed(self):
+        """
+        Calculate the variable amount of bet, that can change every bet.
+        """
+        pass
