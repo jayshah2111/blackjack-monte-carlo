@@ -60,4 +60,12 @@ class Stats():
         self.average_loses = calculate_average_loses(self.loses)
         self.expected_profit = calculate_expected_profit(self.average_profit, self.profited_percentage)
         self.expected_loss = calculate_expected_loss(self.average_loses, self.profited_percentage)
+        
+    def print_general_stats(self):
+        self.__get_general_calculations()
+        print('\n'+'-'*120)
+        print('*GENERAL STATISTICS*')
+        print(f'Expected Rate of Return: {self.rate_of_return}%')
+        #print(f'CDF Average from Binomial Distribution: {self.cdf_average}%')
+        print('-'*120)
     
