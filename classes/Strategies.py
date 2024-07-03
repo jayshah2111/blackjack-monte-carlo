@@ -158,4 +158,6 @@ class FixedBettor(Strategies):
         super().__init__(bet_results, user_input, title)
         self.bet_value = bet_value
 
-    
+    def bet_value_calculator_fixed(self):
+        if self.bet_value is None: self._Strategies__bet_value = self.user_input['bet_value']
+        else: self._Strategies__bet_value = self.bet_value
