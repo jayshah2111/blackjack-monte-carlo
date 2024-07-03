@@ -175,3 +175,6 @@ class PercentageBettor(Strategies):
         
     def strategy_setup(self):
         if self.bet_percentage is None: self.bet_percentage = self.user_input['bet_percentage']
+        
+    def bet_value_calculator_non_fixed(self):
+        self._Strategies__bet_value = self._Strategies__current_bankroll*self.bet_percentage
