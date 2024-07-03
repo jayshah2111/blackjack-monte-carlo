@@ -3,10 +3,10 @@ from abc import ABC, abstractmethod
 from random import uniform
 import math
 
-from betting.PlotGraph import PlotGraph
-from betting.Stats import Stats
-from betting.statistical_calculations import *
-from betting.utils import *
+from classes.PlotGraph import PlotGraph
+from classes.Stats import Stats
+from classes.Calculations import *
+from classes.utils import *
 
 
 strategies_list = ['fixed_bettor', 'percentage_bettor', 'kelly_criterion',
