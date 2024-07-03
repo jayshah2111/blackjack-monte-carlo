@@ -161,3 +161,4 @@ class FixedBettor(Strategies):
     def bet_value_calculator_fixed(self):
         if self.bet_value is None: self._Strategies__bet_value = self.user_input['bet_value']
         else: self._Strategies__bet_value = self.bet_value
+        self._Strategies__bet_value = self.max_min_verify(self._Strategies__bet_value)
