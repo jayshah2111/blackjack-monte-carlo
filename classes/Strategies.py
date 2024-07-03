@@ -162,3 +162,13 @@ class FixedBettor(Strategies):
         if self.bet_value is None: self._Strategies__bet_value = self.user_input['bet_value']
         else: self._Strategies__bet_value = self.bet_value
         self._Strategies__bet_value = self.max_min_verify(self._Strategies__bet_value)
+        
+class PercentageBettor(Strategies):
+    def __init__(
+            self,
+            bet_results: List[List[bool]],
+            user_input: dict,
+            title: str = 'Percentage Bettor',
+            bet_percentage: Union[int, float, None] = None):
+        super().__init__(bet_results, user_input, title)
+        self.bet_percentage = bet_percentage
