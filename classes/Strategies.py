@@ -196,3 +196,6 @@ class KellyCriterion(Strategies):
             print(f'\n*{self.title.upper()}*')
             print('Negative Expectation. DO NOT operate!')
             return [[], [], self.title]
+    
+    def bet_value_calculator_non_fixed(self):
+        self._Strategies__bet_value = self._Strategies__current_bankroll * self.kelly_percentage*self.kelly_fraction
