@@ -45,4 +45,19 @@ class Stats():
         self.cdf_average = calculate_cdf_average_from_binomial_distribution(
            self.user_input, self.bet_results)
         
+    def __get_strategy_calculations(self):
+        # risk_of_ruin = calcule_risk_of_ruin(
+        #    strategies.strategies_list[0], user_input)
+        self.broke_percentage = calculate_broke_percentage(self.user_input, self.broke_count)
+        self.profited_percentage = calculate_profited_percentage(self.user_input, self.profitors_count)
+        self.survived_profited_percentage = calculate_survived_profited_percentage(self.user_input, self.broke_count, self.profitors_count)
+        self.survived_no_profited_percentage = calculate_survived_no_profited_percentage(self.user_input, self.broke_count, self.profitors_count)
+        self.roi_percentage_average = calculate_roi_percentage_average(self.user_input, self.bankroll_histories)
+        self.yield_percentage_average = calculate_yield_percentage_average(self.user_input, self.bankroll_histories, self.bet_value_histories)
+        self.average_of_number_of_bets = calculate_average_of_number_of_bets(self.user_input, self.bet_value_histories)
+        self.final_bankroll_average = calculate_final_bankroll_average(self.user_input, self.bankroll_histories)
+        self.average_profit = calculate_average_profit(self.profits)
+        self.average_loses = calculate_average_loses(self.loses)
+        self.expected_profit = calculate_expected_profit(self.average_profit, self.profited_percentage)
+        self.expected_loss = calculate_expected_loss(self.average_loses, self.profited_percentage)
     
