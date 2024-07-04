@@ -264,3 +264,6 @@ class FixedSoros(Strategies):
             self._Strategies__bet_value += self._Strategies__bet_value*self.user_input['payout_rate']
             self._Strategies__bet_value = self.max_min_verify(self._Strategies__bet_value)
             self.current_round += 1
+        else:
+            self._Strategies__bet_value = self.initial_bet_value
+            self.current_round = 0
