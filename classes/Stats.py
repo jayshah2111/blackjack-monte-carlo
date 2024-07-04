@@ -68,4 +68,12 @@ class Stats():
         print(f'Expected Rate of Return: {self.rate_of_return}%')
         #print(f'CDF Average from Binomial Distribution: {self.cdf_average}%')
         print('-'*120)
+        
+    def print_strategy_stats(self, kelly_percentage=None) -> None:
+        self.__get_strategy_calculations()
+        print('\n'+'-'*120)
+        print(f'*{self.title.upper()}*')
+
+        if kelly_percentage is not None:
+            print(f'Kelly criterion in percentage of capital: {round(kelly_percentage*100,2)}%\n')
     
