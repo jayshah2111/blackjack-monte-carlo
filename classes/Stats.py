@@ -90,5 +90,8 @@ class Stats():
         print(f'Average Profit: {self.user_input["currency"]} {self.average_profit}')
         print(f'Average Loses: {self.user_input["currency"]} {self.average_loses}\n')
         
+        print(f'Expected Profit: {self.user_input["currency"]} {self.expected_profit}')
+        print(f'Expected Loss: {self.user_input["currency"]} {self.expected_loss}\n')
+        
         
 
