@@ -23,7 +23,14 @@ bet_results = BetGenerator(user_input).generate_random_bet_results()
 data = (bet_results, user_input)
 
 def main():
-    return 0
+    Stats(user_input=user_input).print_general_stats()
+
+    FixedBettor(*data).simulate_strategy()
+    PercentageBettor(*data).simulate_strategy()
+    KellyCriterion(*data).simulate_strategy()
+    FixedMartingale(*data).simulate_strategy()
+    
+    PlotGraph.show()
 
 if __name__ == '__main__':
     main()
