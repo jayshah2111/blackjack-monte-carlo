@@ -220,3 +220,8 @@ class FixedMartingale(Strategies):
     def strategy_setup(self):
         if self.inverted and self.title == 'Fixed Martingale': self.title = 'Fixed Anti-Martingale'
         self.current_round = 0
+        
+    def bet_value_calculator_fixed(self):
+        if self.bet_value is None: self._Strategies__bet_value = self.user_input['bet_value']
+        self._Strategies__bet_value = self.max_min_verify(self._Strategies__bet_value)
+        self.initial_bet_value = self._Strategies__bet_value
