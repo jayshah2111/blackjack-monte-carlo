@@ -1,4 +1,7 @@
-from betting.BetGenerator import BetGenerator
+from classes.BetGenerator import BetGenerator
+from classes.Strategies import FixedBettor, PercentageBettor, KellyCriterion, FixedMartingale
+from classes.PlotGraph import PlotGraph
+from classes.Stats import Stats
 
 user_input = {
     'samples': 20, # Number of simulations
