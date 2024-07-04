@@ -248,3 +248,7 @@ class FixedSoros(Strategies):
         super().__init__(bet_results, user_input, title)
         self.bet_value = bet_value
         self.round_limit = rounds
+        
+    def strategy_setup(self):
+        if self.round_limit <= 1: self.round_limit = 2
+        self.current_round = 0
