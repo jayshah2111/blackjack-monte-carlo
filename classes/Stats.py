@@ -76,4 +76,13 @@ class Stats():
 
         if kelly_percentage is not None:
             print(f'Kelly criterion in percentage of capital: {round(kelly_percentage*100,2)}%\n')
-    
+
+        # print(f'Risk of Ruin: {risk_of_ruin}%')
+        print(f'Percentage Broke: {self.broke_percentage}% ({self.broke_count} of {self.user_input["samples"]})')
+        print(f'Percentage Profited: {self.profited_percentage}% ({self.profitors_count} of {self.user_input["samples"]})')
+        print(f'Percentage Survivors Who Profited: {self.survived_profited_percentage}% ({self.profitors_count} of {self.user_input["samples"] - self.broke_count})')
+        print(f'Percentage Survivors Who NOT Profited: {self.survived_no_profited_percentage}% ({(self.user_input["samples"] - self.broke_count) - self.profitors_count} of {self.user_input["samples"] - self.broke_count})\n')
+        
+        print(f'ROI Percentage Average: {self.roi_percentage_average}%')
+        print(f'Yield Percentage Average: {self.yield_percentage_average}%\n')
+
