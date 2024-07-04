@@ -216,3 +216,7 @@ class FixedMartingale(Strategies):
         self.multiplication_factor = multiplication_factor
         self.round_limit = round_limit
         self.inverted = inverted
+    
+    def strategy_setup(self):
+        if self.inverted and self.title == 'Fixed Martingale': self.title = 'Fixed Anti-Martingale'
+        self.current_round = 0
