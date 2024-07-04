@@ -85,4 +85,10 @@ class Stats():
         
         print(f'ROI Percentage Average: {self.roi_percentage_average}%')
         print(f'Yield Percentage Average: {self.yield_percentage_average}%\n')
+        
+        print(f'Final Bankroll Average: {self.user_input["currency"]} {self.final_bankroll_average}')
+        print(f'Average Profit: {self.user_input["currency"]} {self.average_profit}')
+        print(f'Average Loses: {self.user_input["currency"]} {self.average_loses}\n')
+        
+        
 
