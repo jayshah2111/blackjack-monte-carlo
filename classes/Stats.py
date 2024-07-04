@@ -93,5 +93,12 @@ class Stats():
         print(f'Expected Profit: {self.user_input["currency"]} {self.expected_profit}')
         print(f'Expected Loss: {self.user_input["currency"]} {self.expected_loss}\n')
         
+        print(f'Average of Number of Bets: {self.average_of_number_of_bets} bets')
+        if self.user_input['stoploss'] is not None:
+            print(f'{self.sl_reached_count} stoploss reached of {self.user_input["samples"]}')
+        if self.user_input['stopgain'] is not None:
+            print(f'{self.sg_reached_count} stopgain reached of {self.user_input["samples"]}')
+        print('-'*120)
+        
         
 
