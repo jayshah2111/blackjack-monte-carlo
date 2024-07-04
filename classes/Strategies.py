@@ -200,3 +200,19 @@ class KellyCriterion(Strategies):
     def bet_value_calculator_non_fixed(self):
         self._Strategies__bet_value = self._Strategies__current_bankroll * self.kelly_percentage*self.kelly_fraction
         self._Strategies__bet_value = self.max_min_verify(self._Strategies__bet_value)
+
+class FixedMartingale(Strategies):
+    def __init__(
+            self,
+            bet_results: List[List[bool]],
+            user_input: dict,
+            title: str = 'Fixed Martingale',
+            bet_value: Union[int, float, None] = None,
+            multiplication_factor: Union[int, float] = 2,
+            round_limit: int = math.inf,
+            inverted: bool = False):
+        super().__init__(bet_results, user_input, title)
+        self.bet_value = bet_value
+        self.multiplication_factor = multiplication_factor
+        self.round_limit = round_limit
+        self.inverted = inverted
