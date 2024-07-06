@@ -316,3 +316,6 @@ class FixedDAlembert(Strategies):
         self.bet_value = bet_value
         self.round_limit = round_limit
         self.inverted = inverted
+        
+    def strategy_setup(self):
+        if self.inverted and self.title == 'Fixed DAlembert': self.title = 'Fixed Anti-DAlembert'
