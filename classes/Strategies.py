@@ -290,3 +290,14 @@ class FixedFibonacci(Strategies):
         if self.bet_value is None: self._Strategies__bet_value = self.user_input['bet_value']
         self._Strategies__bet_value = self.max_min_verify(self._Strategies__bet_value)
         self.initial_bet_value = self._Strategies__bet_value
+        
+    def bet_value_calculator_non_fixed(self):
+        expected_last_result = True if self.inverted else False
+        previous_bet_result = self._Strategies__sample_result[self._Strategies__bet_result_index - 1]
+        if previous_bet_result == expected_last_result and self._Strategies__bet_result_index > 0 and self.current_round < self.round_limit:
+            self._Strategies__bet_value = nth_fibonacci_number(self.current_round + 2)*self._Strategies__bet_value
+            self._Strategies__bet_value = self.max_min_verify(self._Strategies__bet_value)
+            self.current_round += 1
+        else:
+            self._Strategies__bet_value = self.initial_bet_value
+            self.current_round = 0
