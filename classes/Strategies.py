@@ -301,3 +301,18 @@ class FixedFibonacci(Strategies):
         else:
             self._Strategies__bet_value = self.initial_bet_value
             self.current_round = 0
+            
+class FixedDAlembert(Strategies):
+    # The Anti-DAlembert is very similar to the Oscar's Grind System
+    def __init__(
+            self,
+            bet_results: List[List[bool]],
+            user_input: dict,
+            title: str = 'Fixed DAlembert',
+            bet_value: Union[int, float, None] = None,
+            round_limit: int = math.inf,
+            inverted: bool = False):
+        super().__init__(bet_results, user_input, title)
+        self.bet_value = bet_value
+        self.round_limit = round_limit
+        self.inverted = inverted
