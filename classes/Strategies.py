@@ -267,3 +267,17 @@ class FixedSoros(Strategies):
         else:
             self._Strategies__bet_value = self.initial_bet_value
             self.current_round = 0
+            
+class FixedFibonacci(Strategies):
+    def __init__(
+            self,
+            bet_results: List[List[bool]],
+            user_input: dict,
+            title: str = 'Fixed Fibonacci',
+            bet_value: Union[int, float, None] = None,
+            round_limit: int = math.inf,
+            inverted: bool = False):
+        super().__init__(bet_results, user_input, title)
+        self.bet_value = bet_value
+        self.round_limit = round_limit
+        self.inverted = inverted
