@@ -327,3 +327,18 @@ class FixedDAlembert(Strategies):
 
     def sample_setup(self):
         self.current_round = 0
+        
+    def bet_value_calculator_non_fixed(self):
+        expected_last_result = True if self.inverted else False
+        previous_bet_result = self._Strategies__sample_result[self._Strategies__bet_result_index - 1]
+        if previous_bet_result == expected_last_result and self._Strategies__bet_result_index > 0 and self.current_round < self.round_limit:
+            self._Strategies__bet_value += self.initial_bet_value
+            self._Strategies__bet_value = self.max_min_verify(self._Strategies__bet_value)
+            self.current_round += 1
+        else:
+            if self._Strategies__bet_value > self.initial_bet_value:
+                self._Strategies__bet_value -= self.initial_bet_value
+                self.current_round -= 1
+            else:
+                self._Strategies__bet_value = self.initial_bet_value
+                self.current_round = 0
