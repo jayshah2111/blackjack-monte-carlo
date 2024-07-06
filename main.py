@@ -1,5 +1,5 @@
 from classes.BetGenerator import BetGenerator
-from classes.Strategies import FixedBettor, FixedFibonacci, FixedSoros, PercentageBettor, KellyCriterion, FixedMartingale
+from classes.Strategies import FixedBettor, FixedDAlembert, FixedFibonacci, FixedSoros, PercentageBettor, KellyCriterion, FixedMartingale
 from classes.PlotGraph import PlotGraph
 from classes.Stats import Stats
 
@@ -33,6 +33,8 @@ def main():
     FixedSoros(*data).simulate_strategy()
     FixedFibonacci(*data).simulate_strategy()
     FixedFibonacci(*data, inverted=True).simulate_strategy()
+    FixedDAlembert(*data).simulate_strategy()
+    FixedDAlembert(*data, inverted=True).simulate_strategy()
     
     PlotGraph.show()
 
