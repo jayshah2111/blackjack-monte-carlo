@@ -281,3 +281,7 @@ class FixedFibonacci(Strategies):
         self.bet_value = bet_value
         self.round_limit = round_limit
         self.inverted = inverted
+        
+    def strategy_setup(self):
+        if self.inverted and self.title == 'Fixed Fibonacci': self.title = 'Fixed Anti-Fibonacci'
+        self.current_round = 0
